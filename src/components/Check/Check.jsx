@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import URL from '../../Config';
 
 const Check = () => {
     const [success, setSuccess] = useState(false);
@@ -14,7 +15,7 @@ const Check = () => {
         }
         let refresh = localStorage.getItem('refresh')
         try{
-            const res = await axios.post('http://35.239.251.89/api/token/refresh/', {refresh}, config)
+            const res = await axios.post(`${URL}/account/token/refresh/`, {refresh}, config)
             const {access} = res.data
             localStorage.setItem('access', access)
         }catch(error){
@@ -31,7 +32,7 @@ const Check = () => {
             }
         }
         try{
-            await axios.get(`http://35.239.251.89/check-token/`, config)
+            await axios.get(`${URL}/account/check-token/`, config)
             setSuccess(true)
             setErrors('')
         }catch(error){
