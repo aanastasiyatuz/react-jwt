@@ -11,7 +11,11 @@ const Register = () => {
     const [inpPasswordConfirm, setPasswordConfirm] = useState('');
 
     const navigate = useNavigate();
-    const notify = (error) => toast(Object.values(error).toString().replace(/,/gi, ' '));
+    const notify = (error) => {
+        toast.error(Object.values(error).toString().replace(/,/gi, ''), {
+            icon: false,  theme: "dark"
+          });
+    }
 
     const loginUser = async (newUser) => {
         const config = {

@@ -20,6 +20,11 @@ const ProductDetail = () => {
         }
     }, [])
 
+    const handleDelete = (id) => {
+        deleteProduct(id)
+        navigate('/products')
+    }
+
     if (exactproduct.title){
         return(
         <div>
@@ -33,7 +38,7 @@ const ProductDetail = () => {
             </div>
             { exactproduct.is_author ?  (
                 <>
-                    <button onClick={() => deleteProduct(id)}>Delete</button>
+                    <button onClick={() => handleDelete(id)}>Delete</button>
                     <Link to={`/product-update/${id}`}><button onClick={() => getExactProductData(id)}>Edit</button></Link>
                 </>
                 ): ''

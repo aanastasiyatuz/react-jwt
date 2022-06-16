@@ -10,7 +10,11 @@ const Login = () => {
     const [inpPassword, setPassword] = useState('');
 
     const navigate = useNavigate();
-    const notify = (error) => toast(Object.values(error).toString().replace(/,/gi, ''));
+    const notify = (error) => {
+        toast.error(Object.values(error).toString().replace(/,/gi, ''), {
+            icon: false,  theme: "dark"
+          });
+    }
 
     const registerUser = async (newUser) => {
         const config = {
